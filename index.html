@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Overgeared Item Atlas</title>
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">OG</div>
+        <div>
+          <h1>Item Atlas</h1>
+          <p id="status">Reading item_table.html...</p>
+        </div>
+      </div>
+
+      <div class="toolbar" aria-label="Graph controls">
+        <label class="search-control">
+          <span class="sr-only">Find an item</span>
+          <input id="search" type="search" placeholder="Find an item..." autocomplete="off">
+          <div id="search-results" class="search-results" hidden></div>
+        </label>
+        <label class="filter-control">
+          <span class="sr-only">Filter by section</span>
+          <select id="section-filter"></select>
+        </label>
+        <div class="zoom-controls" aria-label="Zoom controls">
+          <button id="zoom-out" class="icon-button" type="button" title="Zoom out" aria-label="Zoom out">&minus;</button>
+          <button id="zoom-in" class="icon-button" type="button" title="Zoom in" aria-label="Zoom in">+</button>
+        </div>
+        <button id="fit-button" type="button" title="Fit all items in view (F)">Fit graph</button>
+        <button id="reset-button" class="icon-button" type="button" title="Clear selection (Escape)" aria-label="Clear selection">&times;</button>
+      </div>
+    </header>
+
+    <section id="graph-wrap" class="graph-wrap" aria-label="Interactive item merge graph">
+      <canvas id="graph-canvas"></canvas>
+      <div class="canvas-hint">Drag or scroll to move &middot; Shift + scroll horizontally &middot; Ctrl/Cmd + scroll to zoom</div>
+      <div id="tooltip" class="tooltip" hidden></div>
+
+      <aside id="details" class="details empty" aria-live="polite">
+        <button id="close-details" class="details-close" type="button" aria-label="Close item details">&times;</button>
+        <div id="details-content">
+          <div class="empty-state">
+            <span class="empty-glyph">&#9671;</span>
+            <h2>Select an item</h2>
+            <p>Its ingredients and creations will come into focus.</p>
+          </div>
+        </div>
+      </aside>
+
+      <div class="legend" aria-label="Graph legend">
+        <span><i class="legend-line"></i> merge path</span>
+        <span><i class="legend-node"></i> item</span>
+        <span><i class="legend-focus"></i> focused path</span>
+      </div>
+    </section>
+  </main>
+
+  <div id="file-fallback" class="file-fallback" hidden>
+    <div class="fallback-card">
+      <div class="fallback-icon">&uarr;</div>
+      <h2>Choose the source table</h2>
+      <p>Your browser blocked access to <code>item_table.html</code>. Choose that file here, or serve this folder with a local web server.</p>
+      <label class="file-button">Choose item_table.html<input id="source-file" type="file" accept=".html,text/html"></label>
+    </div>
+  </div>
+
+  <script src="./js/app.js" defer></script>
+</body>
+</html>
